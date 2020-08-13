@@ -1,0 +1,24 @@
+{
+    "name": "sbgo/cmb-all-in-one-pay",
+    "description": "招商银行一网通支付",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "周亮",
+            "email": "johnor@qq.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0",
+        "guzzlehttp/guzzle": "6.3.*",
+        "monolog/monolog": "1.25.*",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Cmb\\": "src/"
+        }
+    }
+}
