@@ -196,7 +196,7 @@ class Application
             ]);
             if ($resp->getStatusCode() == 200) {
                 $jsonBody = strval($resp->getBody());
-                $json = json_decode($jsonBody);
+                $json = json_decode($jsonBody,true);
                 return $json;
             }
         } catch (GuzzleException $e) {
@@ -289,7 +289,7 @@ class Application
             ]);
             if ($resp->getStatusCode() === 200) {
                 $jsonBody = strval($resp->getBody());
-                $json = json_decode($jsonBody);
+                $json = json_decode($jsonBody,true);
                 return $json;
             }
         } catch (GuzzleException $e) {
@@ -336,7 +336,7 @@ class Application
             ]);
             if ($resp->getStatusCode() === 200) {
                 $jsonBody = strval($resp->getBody());
-                $json = json_decode($jsonBody);
+                $json = json_decode($jsonBody,true);
                 return $json;
             }
         } catch (GuzzleException $e) {
@@ -383,7 +383,7 @@ class Application
             ]);
             if ($resp->getStatusCode() === 200) {
                 $jsonBody = strval($resp->getBody());
-                $json = json_decode($jsonBody);
+                $json = json_decode($jsonBody,true);
                 return $json;
             }
         } catch (GuzzleException $e) {
@@ -402,9 +402,9 @@ class Application
      */
     public function queryOrder($type = 'A', $bankSerialNo = '', $date = '', $orderNo = '')
     {
-        $actionUrl = "https://b2b.cmbchina.com/CmbBank_B2B/UI/NetPay/DoBusiness.ashx";
+        $actionUrl = "https://merchserv.netpay.cmbchina.com/merchserv/BaseHttp.dll?QuerySingleOrder";
         if ($this->env === 'test') {
-            $actionUrl = "http://mobiletest.cmburl.cn/CmbBank_B2B/UI/NetPay/DoBusiness.ashx";
+            $actionUrl = "http://121.15.180.66:801/netpayment_directlink_nosession/BaseHttp.dll?QuerySingleOrder";
         }
         $toDay = new \DateTime();
         $reqData = [
@@ -433,7 +433,7 @@ class Application
             ]);
             if ($resp->getStatusCode() === 200) {
                 $jsonBody = strval($resp->getBody());
-                $json = json_decode($jsonBody);
+                $json = json_decode($jsonBody,true);
                 return $json;
             }
         } catch (GuzzleException $e) {
@@ -498,7 +498,7 @@ class Application
             ]);
             if ($resp->getStatusCode() === 200) {
                 $jsonBody = strval($resp->getBody());
-                $json = json_decode($jsonBody);
+                $json = json_decode($jsonBody,true);
                 return $json;
             }
         } catch (GuzzleException $e) {
@@ -580,7 +580,7 @@ class Application
             ]);
             if ($resp->getStatusCode() === 200) {
                 $jsonBody = strval($resp->getBody());
-                $json = json_decode($jsonBody);
+                $json = json_decode($jsonBody,true);
                 return $json;
             }
         } catch (GuzzleException $e) {
