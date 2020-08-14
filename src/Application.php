@@ -251,11 +251,12 @@ class Application
     /**
      * 退款接口
      * @param $orderNo string 原支付订单号
+     * @param $date string 支付时订单日期 yyyyMMdd
      * @param $refundSerialNo string 退款流水号
      * @param $amount string 退款金额
      * @return bool|mixed
      */
-    public function refundOrder($orderNo, $refundSerialNo, $amount)
+    public function refundOrder($orderNo,$date, $refundSerialNo, $amount)
     {
         $actionUrl = "https://merchserv.netpay.cmbchina.com/merchserv/BaseHttp.dll?DoRefundV2";
         if ($this->env === 'test') {
@@ -266,7 +267,7 @@ class Application
             'dateTime' => $toDay->format('YmdHis'),
             'branchNo' => $this->branchNo,
             'merchantNo' => $this->merchantNo,
-            'date' => $toDay->format('Ymd'),
+            'date' => $date,
             'orderNo' => $orderNo,
             'refundSerialNo' => $refundSerialNo,
             'amount' => $amount,
