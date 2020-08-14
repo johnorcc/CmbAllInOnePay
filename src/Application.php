@@ -143,10 +143,12 @@ class Application
     {
         //待验证签名字符串
         $toSignStr = '';
+        ksort($respData);
         foreach ($respData as $k => $v) {
             $toSignStr .= $k . '=' . $v . '&';
         }
 
+        $toSignStr = rtrim($toSignStr,'&');
         //处理证书
         $pem = chunk_split($this->pubKey, 64, "\n");
         $pem = "-----BEGIN PUBLIC KEY-----\n" . $pem . "-----END PUBLIC KEY-----\n";
@@ -242,6 +244,7 @@ class Application
             'sign' => $this->sign($reqData),
             'reqData' => $reqData
         ];
+        $jsonRequestData = json_encode($jsonRequestData);
         return compact('actionUrl', 'jsonRequestData');
     }
 
