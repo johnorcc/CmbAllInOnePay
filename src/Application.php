@@ -409,9 +409,9 @@ class Application
         $toDay = new \DateTime();
         $reqData = [
             'dateTime' => $toDay->format('YmdHis'),
-            'date' => $date,
             'branchNo' => $this->branchNo,
             'merchantNo' => $this->merchantNo,
+            'date' => $date,
             'type' => $type,
             'bankSerialNo' => $bankSerialNo,
             'orderNo' => $orderNo
@@ -445,11 +445,12 @@ class Application
     /**
      * 通过银行流水号查询订单
      * @param $transactionID
+     * @param $date
      * @return bool|mixed
      */
-    public function queryOrderByTransactionID($transactionID)
+    public function queryOrderByTransactionID($transactionID,$date)
     {
-        return $this->queryOrder('A', $transactionID);
+        return $this->queryOrder('A', $transactionID,$date);
     }
 
     /**
